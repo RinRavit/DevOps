@@ -4,7 +4,7 @@ pipeline {
         stage('Fetch from GitHub') { // build steps
             steps {
                 echo 'Fetching from GitHub'
-                git branch: 'TP03', url:'https://github.com/Chharng-Chhit/testJenkins.git'
+                git branch: 'TP03', url:'https://github.com/RinRavit/DevOps.git'
             }
         }
         stage('Build using Tools') {
@@ -32,14 +32,14 @@ pipeline {
             mail(
                 subject: "Pipeline Successful",
                 body: "Hello,\n\nYour Jenkins pipeline has succeeded.\n\nHere are some details:\n\n- Build Number: ${env.BUILD_NUMBER}\n- Project Name: ${env.JOB_NAME}\n- Build URL: ${env.BUILD_URL}\n\n${currentBuild.currentResult}: ${currentBuild.description ?: 'No additional information available.'}\n\nRegards,\nJenkins",
-                to: "chhit085@gmail.com"
+                to: "ravid251220@gmail.com"
             )
         }
         failure {
             mail(
                 subject: "Pipeline Failed",
                 body: "Hello,\n\nYour Jenkins pipeline has failed.\n\nHere are some details:\n\n- Build Number: ${env.BUILD_NUMBER}\n- Project Name: ${env.JOB_NAME}\n- Build URL: ${env.BUILD_URL}\n\n${currentBuild.currentResult}: ${currentBuild.description ?: 'No additional information available.'}\n\nRegards,\nJenkins",
-                to: "chhit085@gmail.com"
+                to: "ravid251220@gmail.com"
             )
         }
     }
